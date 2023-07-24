@@ -16,23 +16,37 @@ public class HudMultiplayer : MonoBehaviour
 	public GameObject options, stop, host;
 	
 	DaggerfallUI gameUI;
+    InputManager inputManager;
+    UserInterfaceManager uiManager;
 	
+    public bool isMenu = false;
 	
     void Start()
     {
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        gameUI = GameObject.Find("DaggerfallUI").GetComponent<DaggerfallUI>();
+        uiManager = gameUI.UserInterfaceManager;
 		StartCoroutine(Check());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O)){
+            isMenu = !isMenu;
+            //console log
+            Debug.Log("Menu: " + isMenu);
+        }
+
+        if (isPauseMenu(uiManager))
+            isMenu = false;
     }
 	
 	
 	IEnumerator Check()
 	{
-		InputManager inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
-		gameUI = GameObject.Find("DaggerfallUI").GetComponent<DaggerfallUI>();
-		UserInterfaceManager uiManager = gameUI.UserInterfaceManager;
 		while (true)
 		{
-			
-			canvas.enabled = isPauseMenu(uiManager);
+			canvas.enabled = isMenu;
 			raycaster.enabled = canvas.enabled;
 			if (canvas.enabled){
 				setStatus();
