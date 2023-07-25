@@ -239,6 +239,7 @@ namespace DaggerfallWorkshop
         public bool EnableQuestDebugger { get; set; }
         public int QuestRumorWeight { get; set; }
         public bool DisableEnemyDeathAlert { get; set; }
+        public bool HideLoginName { get; set; }
 
         // [Spells]
         public bool EnableSpellLighting { get; set; }
@@ -246,7 +247,7 @@ namespace DaggerfallWorkshop
 
         // [Controls]
         public bool InvertMouseVertical { get; set; }
-        public bool MouseLookSmoothing { get; set; }
+        public float MouseLookSmoothingFactor { get; set; }
         public float MouseLookSensitivity { get; set; }
         public float JoystickLookSensitivity { get; set; }
         public float JoystickCursorSensitivity { get; set; }
@@ -316,6 +317,27 @@ namespace DaggerfallWorkshop
         #endregion
 
         #region Public Methods
+
+        public static float[] GetMouseLookSmoothingFactors()
+        {
+            return new float[] { 0.0f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f };
+        }
+
+        public static int GetMouseLookSmoothingStrength(float factor)
+        {
+            float[] factors = GetMouseLookSmoothingFactors();
+
+            for (int i = 0; i < factors.Length; ++i)
+                if (factors[i] == factor)
+                    return i;
+
+            return 0;
+        }
+
+        public static float GetMouseLookSmoothingFactor(int index)
+        {
+            return GetMouseLookSmoothingFactors()[index];
+        }
 
         /// <summary>
         /// Load settings from settings.ini to live properties.
@@ -438,13 +460,14 @@ namespace DaggerfallWorkshop
             EnableQuestDebugger = GetBool(sectionGUI, "EnableQuestDebugger");
             QuestRumorWeight = GetInt(sectionGUI, "QuestRumorWeight", 1, 100);
             DisableEnemyDeathAlert = GetBool(sectionGUI, "DisableEnemyDeathAlert");
+            HideLoginName = GetBool(sectionGUI, "HideLoginName");
 
             EnableSpellLighting = GetBool(sectionSpells, "EnableSpellLighting");
             EnableSpellShadows = GetBool(sectionSpells, "EnableSpellShadows");
 
             InvertMouseVertical = GetBool(sectionControls, "InvertMouseVertical");
-            MouseLookSmoothing = GetBool(sectionControls, "MouseLookSmoothing");
-            MouseLookSensitivity = GetFloat(sectionControls, "MouseLookSensitivity", 0.1f, 8.0f);
+            MouseLookSmoothingFactor = GetFloat(sectionControls, "MouseLookSmoothingFactor", 0.0f, 0.9f);
+            MouseLookSensitivity = GetFloat(sectionControls, "MouseLookSensitivity", 0.1f, 16.0f);
             JoystickLookSensitivity = GetFloat(sectionControls, "JoystickLookSensitivity", 0.1f, 4.0f);
             JoystickCursorSensitivity = GetFloat(sectionControls, "JoystickCursorSensitivity", 0.1f, 5.0f);
             JoystickMovementThreshold = GetFloat(sectionControls, "JoystickMovementThreshold", 0.0f, 1.0f);
@@ -625,12 +648,13 @@ namespace DaggerfallWorkshop
             SetBool(sectionGUI, "EnableQuestDebugger", EnableQuestDebugger);
             SetInt(sectionGUI, "QuestRumorWeight", QuestRumorWeight);
             SetBool(sectionGUI, "DisableEnemyDeathAlert", DisableEnemyDeathAlert);
+            SetBool(sectionGUI, "HideLoginName", HideLoginName);
 
             SetBool(sectionSpells, "EnableSpellLighting", EnableSpellLighting);
             SetBool(sectionSpells, "EnableSpellShadows", EnableSpellShadows);
 
             SetBool(sectionControls, "InvertMouseVertical", InvertMouseVertical);
-            SetBool(sectionControls, "MouseLookSmoothing", MouseLookSmoothing);
+            SetFloat(sectionControls, "MouseLookSmoothingFactor", MouseLookSmoothingFactor);
             SetFloat(sectionControls, "MouseLookSensitivity", MouseLookSensitivity);
             SetFloat(sectionControls, "JoystickLookSensitivity", JoystickLookSensitivity);
             SetFloat(sectionControls, "JoystickCursorSensitivity", JoystickCursorSensitivity);

@@ -1401,7 +1401,6 @@ namespace DaggerfallWorkshop.Utility
                     loadID = (ulong)(blockData.Position + obj.Position);
 
                 int slot = obj.Resources.FlatResource.Flags;
-				
 				if (PlayerAssets.hostLevel != 0){
 					if (slot == 0)
 						slot = PlayerMultiplayer.getRandom(1, 7);
@@ -1432,14 +1431,14 @@ namespace DaggerfallWorkshop.Utility
             int playerLevel = (PlayerAssets.hostLevel != 0 ? PlayerAssets.hostLevel : GameManager.Instance.PlayerEntity.Level);
             int minTableIndex = 0;
             int maxTableIndex = table.Enemies.Length;
-			
+
 			int random = DFRandom.random_range_inclusive(1, 100);
 			
 			if (PlayerAssets.hostLevel != 0){
 				random = PlayerMultiplayer.getRandom(1, 100);
 				Debug.Log("RANDOM " + random);
 			}
-			
+
             if (random > 95 && playerLevel <= 5)
             {
                 maxTableIndex = playerLevel + 2;
@@ -1463,6 +1462,7 @@ namespace DaggerfallWorkshop.Utility
                 minTableIndex = 14;
                 maxTableIndex = 19;
             }
+
 			if (PlayerAssets.hostLevel != 0)
 				return table.Enemies[PlayerMultiplayer.getRandom(minTableIndex, maxTableIndex)];
 			else
@@ -1528,7 +1528,7 @@ namespace DaggerfallWorkshop.Utility
             {
                 return;
             }
-			
+
             // Get default reaction
             MobileReactions reaction = MobileReactions.Hostile;
             if (obj.Resources.FlatResource.Action == (int)DFBlock.EnemyReactionTypes.Passive)

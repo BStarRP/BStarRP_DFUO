@@ -766,11 +766,6 @@ namespace DaggerfallWorkshop.Game.Utility.ModSupport
 
             try
             {
-				foreach (string s in source){
-					if (s.Contains("=>"))
-						Debug.Log("TEST -" + s);
-					
-				}
                 assembly = Compiler.CompileSource(source, true);
                 return assembly;
             }

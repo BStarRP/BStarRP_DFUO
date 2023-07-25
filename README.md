@@ -1,11 +1,48 @@
-# DFU-Tanguy-Multiplayer
+# What is Daggerfall Unity?
 
-### Daggerfall Unity
+> Daggerfall Unity is an open source recreation of Daggerfall in the Unity engine created by [Daggerfall Workshop](http://www.dfworkshop.net).
 
-The original code is not from me, I copied the 0.14.5 code from [Daggerfall Unity](https://github.com/Interkarma/daggerfall-unity).
+## Classic Daggerfall Plus
 
-You can be informed of the newest versions [here](https://www.dfworkshop.net/).
++ Cross-platform (Windows/Linux/Mac)
++ Retro graphics are boosted by modern engine and lighting
++ High resolution with classic style
++ Smooth first-person controls
++ Huge draw distances
++ Quality of life enhancements
++ Mod support
 
-I hope making this project a mod for the original version, but for now this is a "Custom Build".
+## Free Addon To Free Daggerfall
 
-Here is a Tutorial to setup the thing to play online with steam [here](https://www.youtube.com/watch?v=pEvdcE6smFQ).
++ Runs using a free copy of Daggerfall
++ Import your classic save games
++ Revisit a huge world of adventure
+
+## An Open Platform
+
++ Open source under MIT license
++ Quality contributions are welcome
++ Newcomers welcome and helped to learn
++ Friendly community
+
+## Available Now
+
++ Build updated regularly
++ Start creating mods
++ Contribute to development
+
+## Links
+
++ [Daggerfall Workshop](http://www.dfworkshop.net/) - *Follow the development of Daggerfall Unity*
++ [Workshop Forums](http://forums.dfworkshop.net/) - *Join the community*
++ [Reddit](https://www.reddit.com/r/daggerfallunity) - *Daggerfall Unity subreddit*
++ [Twitter](https://twitter.com/gav_clayton) - *Follow lead developer on Twitter for more news*
+
+## Versions
++ *Daggerfall Unity* - v0.14.x
++ *Daggerfall Tools for Unity* - v1.9.x
++ *Required Unity3D version* - 2019.4.40f1 LTS
+
+## License
+
++ MIT License
